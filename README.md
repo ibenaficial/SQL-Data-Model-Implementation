@@ -1,1 +1,31 @@
-# SQL-Data-Model-Implementation
+# SQL Data Model Implementation CIS 9340
+Prof. Taq Karim
+<br>Group #7: Bena Huang, Randell D’Amelio, Omer Khan, Natalya Yaroshevich 
+<br>December 13, 2020
+## Final Project Report
+Our group will be building a data model for a new app called ​TBD​. This app will be a restaurant reservation app that helps connect restaurants to diners in an easy and efficient way. The app’s main goal is to allow diners to make reservations at their favorite restaurants, but also allows anyone to broaden their taste buds by exploring new restaurants.
+<br><br>Restaurants who signed up with us to use our service will be able to have their reservations organized in our app. They’ll be able to view the number of reservations made each day, what time the reservation is made for, how many people per party, and any additional details specified by the diner. Since our app will be handling all reservations, this also allows restaurants to be able to focus on other aspects of their operations and not have to worry about taking and maintaining reservations.
+<br><br>On the consumer side of this app, diners will be able to make reservations with the restaurants they choose. They’ll be able to easily make reservations for specific dates and times, specify the number of people in their party, any dietary restrictions the restaurant should know about beforehand, and any special events that this reservation is for (ie. birthday, graduation, anniversary, etc.). For every reservation they make and check in to at the restaurant, the diner will receive points on their account. These points can be redeemed for credit in future reservations. We are also considering the possibility of having special offers, such as meal coupons, on our app where restaurants can list any special promotions they’re having, and diners can also redeem points for these special offers.
+<br><br>Diners will also be allowed to write reviews for the restaurants they’ve checked in to after their meal. This will be especially helpful to other diners who have never been to this particular restaurant and would like to try something new. Ratings will be on a scale from 1 to 5 stars, and diners can write a small description on how their dining experience went, as well as attach any photos they’ve taken of their meal or restaurant decor.
+The objective of our app is to help create a seamless and easy process for restaurant goers to attend their favorite restaurants. By helping restaurants create a better customer service standard, this will also boost their popularity with diners and potentially boost restaurant revenue.
+ 
+## Entity-Relationship Diagram
+![Screen Shot 2022-03-30 at 5 13 50 PM](https://user-images.githubusercontent.com/102686618/160931919-e0081394-c5c4-43f2-a5df-5613af95fb1b.png)
+
+## Relational Model Diagram
+**Customer** (Customer_ID (key), Last_name, First_name, Birthday, Email, Phone_number, Points_aquired(FK))
+<br>**Points**(Points_aquired(key), Member_level, Credit_received)
+<br>**Reservation** (Reservation_ID(key), Time, Date, Occasion, Number_guests, Special_notes, Customer_ID(FK), Restaurant_ID(FK))
+<br>**Table** (Table_ID(key), Available_seats, Vacant, Reservation_ID(FK), Restaurant_ID(FK)) Restaurant ​(Restaurant_ID (key), Zip(FK), Restaurant_name, Address, Phone_number, Web_site, Email, Cuisine_type)
+<br>**Zip_code** (Zip(key), City, State)
+<br>**Rating** (Rating_ID(key), Number_of_stars, Review, Receipt_code, Restaurant_ID(FK), Customer_ID(FK))
+ 
+## Important Queries
+We wrote seven queries that we felt would be useful to analyze information from our database:
+<br><br>1. The first query returns the number of restaurants in our database with a specific cuisine type. This query is useful when we want to see how many restaurants we have a certain cuisine, allowing us to see if we have a good selection of each cuisine for customers to choose from. For example, if we feel that there aren’t enough Thai restaurants in our database, we can reach out to Thai restaurants to see if they would like to be added into our app.
+<br><br>2. The second query returns restaurants with a certain star rating. This query is useful for seeing how our customers are rating the restaurants they’ve reserved through our app. We can easily figure out which restaurants have lower ratings and focus on what these restaurants are lacking and can notify these restaurants about these points to help them improve their business.
+<br><br>3. The third query returns all reservations made within a certain date range. This query is useful to help us see the fluctuations in reservations made throughout the year and analyze any trends that we can observe. For example, we can search for the number of reservations made in the month of April and compare it to the number of reservations made in the month of December. If we see that there are more reservations made in the month of December, we can conclude that it might be due to the holiday season.
+<br><br>4. The fourth query returns customers of a certain member level. The member level is determined by the number of points they acquired by making reservations through our app. This query is useful to see how often our customers are actually reserving with our app. If the majority of our customers are in the silver or gold level, we can conclude that people who sign up with our app are actively using it. If the majority of our customers are in the bronze level, we can conclude that customers are not as active as we hope they’d be, and look into reasons why.
+<br><br>5. The fifth query returns restaurants within a certain zip code. This query is useful to see how many restaurants we have in our database within a certain area. If there are areas where we have fewer restaurant options, we can look into expanding our database in that area.
+<br><br>6. The sixth query returns reservations that have greater than a certain number of guests. This query is useful when we’re looking to see which restaurants are able to host large parties, or which restaurants are more intimate for couples. Likewise, we can also use this query to see if certain restaurants are more favored by couples or by parties.
+<br><br>7. The seventh query returns the customer with the highest number of points acquired. This query is useful to see who our most active customer is. Based on their number of points, we may offer them special discounts for being our most valued customer.
